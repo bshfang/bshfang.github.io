@@ -1,0 +1,13 @@
+---
+layout: post
+title:  "MVRoom: Controllable 3D Indoor Scene Generation with Multi-View Diffusion Models"
+date:   2025-04-24 21:21:53 +00:00
+image: /images/mvroom.gif
+categories: research
+authors: "<strong>Shaoheng Fang</strong>, Chaohui Yu, Fan Wang, Qixing Huang"
+subtitle: "ArXiv 2025"
+venue: "Under review"
+paper: bshfang.github.com
+---
+
+

@@ -1,0 +1,13 @@
+---
+layout: post
+title:  "Where2comm: Communication-efficient collaborative perception via spatial confidence maps"
+date:   2022-12-06 21:21:53 +00:00
+image: /images/where2comm.jpg
+categories: research
+authors: "Yue Hu, <strong>Shaoheng Fang</strong>, Zixing Lei, Yiqi Zhong, Siheng Chen"
+subtitle: "NIPS 2022"
+venue: "Advances in neural information processing systems, spotlight"
+paper: https://arxiv.org/abs/2209.12836
+code: https://github.com/MediaBrain-SJTU/Where2comm
+---
+

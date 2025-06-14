@@ -1,0 +1,14 @@
+---
+layout: post
+title:  "Fedrsu: Federated learning for scene flow estimation on roadside units"
+date:   2024-08-26 21:21:53 +00:00
+image: /images/fedrsu.jpg
+categories: research
+authors: "<strong>Shaoheng Fang</strong>*, Rui Ye*, Wenhao Wang*, Zuhong Liu, Yuxiao Wang, Yafei Wang, Siheng Chen, Yanfeng Wang"
+subtitle: "TITS 2024"
+venue: "IEEE Transactions on Intelligent Transportation Systems"
+paper: https://arxiv.org/abs/2401.12862
+code: https://github.com/wwh0411/FedRSU
+---
+
+

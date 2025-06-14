@@ -1,0 +1,14 @@
+---
+layout: post
+title:  "Aerial monocular 3d object detection"
+date:   2023-02-15 21:21:53 +00:00
+image: /images/aerial.jpg
+categories: research
+authors: "Yue Hu, <strong>Shaoheng Fang</strong>, Weidi Xie, Siheng Chen"
+subtitle: "RAL 2023"
+venue: "IEEE Robotics and Automation Letters (RAL)"
+paper: https://arxiv.org/pdf/2208.03974
+dataset: https://siheng-chen.github.io/dataset/coperception-uav/
+---
+
+

@@ -1,0 +1,13 @@
+---
+layout: post
+title:  "Tbp-former: Learning temporal bird's-eye-view pyramid for joint perception and prediction in vision-centric autonomous driving"
+date:   2023-02-13 21:21:53 +00:00
+image: /images/tbp_former.jpg
+categories: research
+authors: "<strong>Shaoheng Fang</strong>*, Zi Wang*, Yiqi Zhong, Junhao Ge, Siheng Chen"
+subtitle: "CVPR 2023"
+venue: "Proceedings of the IEEE/CVF conference on computer vision and pattern recognition"
+paper: https://arxiv.org/abs/2303.09998
+---
+
+

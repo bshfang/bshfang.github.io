@@ -1,0 +1,14 @@
+---
+layout: post
+title:  "Self-Supervised Bird's Eye View Motion Prediction with Cross-Modality Signals"
+date:   2024-11-24 21:21:53 +00:00
+image: /images/selfmotion.jpg
+categories: research
+authors: "<strong>Shaoheng Fang</strong>, Zuhong Liu, Mingyu Wang, Chenxin Xu, Yiqi Zhong, Siheng Chen"
+subtitle: "AAAI 2024"
+venue: "Proceedings of the AAAI Conference on Artificial Intelligence"
+paper: https://arxiv.org/abs/2401.11499
+code: https://github.com/bshfang/self-supervised-motion
+---
+
+
