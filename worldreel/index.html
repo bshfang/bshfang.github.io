@@ -1,0 +1,1159 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+  <title>WorldReel</title>
+  <style>
+    body {
+      padding: 2em;
+      font-family: sans-serif;
+      background-color: #f7f7f7;
+      color: #333;
+      margin: 0;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 2.5em 2.5em;
+      background-color: #ffffff;
+      color: #1f252d;
+      border-radius: 1em;
+      margin-bottom: 2em;
+      border: 1px solid #e5e5e5;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    .hero h1 {
+      font-size: 2.2em;
+      margin: 0;
+      font-weight: bold;
+      margin-bottom: 0.5em; /* 稍微增加标题和作者之间的间距 */
+    }
+
+    .hero p {
+      font-size: 1.15em;
+      margin: 0.75em 0 0;
+    }
+
+    .publication-authors {
+      font-family: 'Google Sans', sans-serif;
+    }
+
+    .author-block {
+      font-size: 20px;
+      color: #1f252d;
+      padding: 0 5px;
+      display: inline-block;
+    }
+
+    .author-block a {
+      color: inherit;
+      text-decoration: none;
+    }
+    
+    .author-block a:hover {
+      text-decoration: underline;
+    }
+
+    .publication-affiliations {
+      margin-top: 10px;
+      font-size: 16px;
+      color: #55616a;
+    }
+
+    .affiliation-block {
+      display: inline-block;
+      margin: 0 10px;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 0.75em;
+      margin-top: 1.5em;
+      flex-wrap: wrap;
+    }
+
+    .hero-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5em;
+      padding: 0.55em 1.2em;
+      border-radius: 0.8em;
+      border: 1px solid #2d3138;
+      background-color: #2d3138;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.18s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .hero-button:hover {
+      background-color: #181c22;
+      color: #ffffff;
+      border-color: #181c22;
+    }
+
+    .hero-button svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .overview-figure {
+      width: 85%;
+      max-width: 1100px;
+      height: auto;
+      display: block;
+      margin: 1em auto;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      overflow: visible;
+    }
+
+    .overview-caption {
+      max-width: 1100px;
+      margin: 0 auto;
+      font-size: 0.97em;
+      line-height: 1.6em;
+      color: #444;
+      text-align: left;
+    }
+
+    .bibtex-block {
+      background-color: #ffffff;
+      border: 1px solid #e5e5e5;
+      border-radius: 1em;
+      padding: 2em;
+      box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.1);
+      margin: 0 0 3em 0;
+    }
+
+    .bibtex-block .teaser-title {
+      text-align: center;
+    }
+
+    .bibtex-code {
+      background: #f1f2f5;
+      color: #1f252d;
+      border-radius: 0.6em;
+      padding: 1.1em;
+      overflow-x: auto;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.9em;
+      margin: 0 auto;
+      border: 1px solid #dcdfe3;
+      max-width: 960px;
+    }
+
+
+    .section-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1em;
+      margin-bottom: 2em;
+    }
+
+    .section-button {
+      background-color: #ffffff;
+      border-radius: 999px;
+      border: 2px solid #333;
+      color: #333;
+      padding: 0.6em 1.5em;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .section-button:hover {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .teaser {
+      text-align: center;
+      margin-bottom: 3em;
+      padding: 2em;
+      background-color: #ffffff;
+      border-radius: 1em;
+      box-shadow: 0 0 1em 0em rgba(0, 0, 0, 0.1);
+    }
+
+    .teaser-title {
+      font-size: 2em;
+      font-weight: bold;
+      margin-bottom: 0.5em;
+    }
+
+    .teaser-description {
+      font-size: 1.05em;
+      line-height: 1.55em;
+      margin-bottom: 2em;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* --- Ablation Text Description Styles --- */
+    .ablation-text {
+      text-align: left;
+      max-width: 1000px;
+      margin: 0 auto 2em auto;
+      padding: 1.5em;
+      background-color: #f4f4f4; /* Slightly different grey to distinguish */
+      border-radius: 0.5em;
+      font-size: 0.95em;
+      line-height: 1.6em;
+    }
+
+    .ablation-text strong {
+      color: #222;
+      font-weight: 700;
+    }
+    
+    .ablation-text ul {
+      margin-top: 0.5em;
+      padding-left: 1.5em;
+    }
+    
+    .ablation-text li {
+      margin-bottom: 0.5em;
+    }
+
+    .placeholder-note {
+      color: #666;
+      font-style: italic;
+    }
+
+    .ablation-sample {
+      margin-bottom: 2.5em;
+    }
+
+    .ablation-input-row {
+      display: flex;
+      justify-content: center;
+      gap: 1.25em;
+      margin-bottom: 1em;
+    }
+
+    .ablation-row {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 1.25em;
+      justify-content: flex-start; 
+      overflow-x: auto;
+      padding-bottom: 0.5em;
+      padding-left: 1em; 
+      padding-right: 1em;
+    }
+
+    @media (min-width: 1600px) {
+      .ablation-row {
+        justify-content: center;
+      }
+    }
+
+    .ablation-row::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .ablation-row::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 999px;
+    }
+
+    .ablation-item {
+      flex: 0 0 auto;
+      text-align: center;
+    }
+
+    .ablation-label {
+      font-size: 1em;
+      font-weight: 600;
+      margin-bottom: 0.4em;
+    }
+
+    .ablation-media {
+      width: 300px;
+      border-radius: 0.5em;
+      box-shadow: 0 0 1em rgba(0, 0, 0, 0.15);
+      display: block; 
+    }
+
+    @media (max-width: 1200px) {
+      .ablation-media {
+        width: 280px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .ablation-media {
+        width: 260px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .ablation-media {
+        width: 220px;
+      }
+    }
+
+    .generated-group {
+      margin-bottom: 2.5em;
+    }
+
+    .generated-row {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      gap: 1em;
+      overflow-x: auto;
+      padding-bottom: 0.5em;
+      padding-left: 1em;
+      padding-right: 1em;
+    }
+    
+    @media (min-width: 1600px) {
+      .generated-row {
+        justify-content: center;
+      }
+    }
+
+    .generated-row::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .generated-row::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 999px;
+    }
+
+    .generated-item {
+      flex: 0 0 auto;
+      text-align: center;
+    }
+
+    .generated-label {
+      font-weight: 600;
+      margin-bottom: 0.4em;
+      min-height: 1.2em;
+    }
+
+    .generated-media {
+      width: 300px;
+      border-radius: 0.5em;
+      box-shadow: 0 0 1em rgba(0, 0, 0, 0.15);
+    }
+
+    @media (max-width: 1200px) {
+      .generated-media {
+        width: 280px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .generated-media {
+        width: 260px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .generated-media {
+        width: 220px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="hero">
+    <h1>WorldReel: 4D Video Generation with Consistent Geometry and Motion Modeling</h1>
+    
+    <div class="publication-authors">
+      <span class="author-block">
+        <a href="https://bshfang.github.io/" target="_blank">Shaoheng Fang</a><sup>1</sup>,
+      </span>
+      <span class="author-block">
+        <a href="https://hwjiang1510.github.io/" target="_blank">Hanwen Jiang</a><sup>2</sup>,
+      </span>
+      <span class="author-block">
+        <a href="https://bbaaii.github.io/" target="_blank">Yunpeng Bai</a><sup>1</sup>,
+      </span>
+      <span class="author-block">
+        <a href="http://www0.cs.ucl.ac.uk/staff/n.mitra/" target="_blank">Niloy J. Mitra</a><sup>2,3</sup>,
+      </span>
+      <span class="author-block">
+        <a href="https://www.cs.utexas.edu/~huangqx/" target="_blank">Qixing Huang</a><sup>1</sup>
+      </span>
+    </div>
+
+    <div class="publication-affiliations">
+      <span class="affiliation-block"><sup>1</sup>The University of Texas at Austin</span>
+      <span class="affiliation-block"><sup>2</sup>Adobe Research</span>
+      <span class="affiliation-block"><sup>3</sup>University College London</span>
+    </div>
+
+    <div class="hero-actions">
+      <a class="hero-button" href="#">
+        <svg viewBox="0 0 448 512" aria-hidden="true">
+          <path fill="currentColor" d="m119.65 351.996c-5.85.135-11.19-3.299-13.5-8.676-2.2-5.27-.62-8.967 4.2-15.865 7.05-10.38 78.82-96.563 78.82-96.563l-15.88-14.863c-13.38-13.378-13.96-31.333-1.51-43.775l18.49-17.613-51.59-63.377c-4.01-4.268-6.49-11.756-4.25-17.131 2.28-5.536 7.7-9.129 13.68-9.07 3.84.096 7.44 1.874 9.84 4.861l61.37 57.057 94.58-90.07c3.19-3.084 7.44-4.84 11.88-4.91 1.61.004 3.2.245 4.74.715 5.78 1.806 10.25 6.418 11.87 12.252 1.3 5.474-.28 11.234-4.18 15.284l-83.09 100.012 14.88 13.834c11.1 10.003 11.16 27.39.13 37.469l-16.3 15.63 56.26 66.444.07.086.07.09c5.03 6.53 7.43 11.561 4.84 17.94-3.13 5.968-8.7 10.29-15.26 11.851-.68.091-1.36.136-2.04.137v-.012c-4.43-.271-8.61-2.131-11.78-5.24l-.13-.108-.12-.111-65.21-59.127-89.9 86.24s-5.33 6.478-10.97 6.612zm178.11-33.041c.48-.002.96-.033 1.43-.096 4.84-1.333 8.96-4.54 11.43-8.91 1.45-3.563 1-6.457-4.2-13.215l-56.05-66.218-26.38 25.303 64.95 58.906c2.34 2.415 5.47 3.911 8.82 4.217zm-105.32-91.553L334.45 57.244c2.79-3.489 4.53-6.979 3.34-10.912-1.16-4.303-4.43-7.718-8.68-9.057-1.08-.334-2.21-.504-3.34-.506-3.21.076-6.27 1.356-8.58 3.588L175.14 175.642c-11.17 11.172-9.48 26.02 1.39 36.895z"/>
+        </svg>
+        <span>ArXiv (todo: submitting)</span>
+      </a>
+      <a class="hero-button" href="WorldReel_arxiv.pdf" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"></path>
+          <path d="M14 3v5h5"></path>
+          <path d="M9 13h6M9 17h6"></path>
+        </svg>
+        <span>Paper (PDF)</span>
+      </a>
+      <a class="hero-button" href="https://github.com/bshfang/WorldReel" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.48 2 2 6.58 2 12.2c0 4.5 2.87 8.31 6.84 9.66.5.1.68-.22.68-.48l-.01-1.7c-2.78.62-3.37-1.34-3.37-1.34-.45-1.17-1.1-1.48-1.1-1.48-.9-.62.07-.61.07-.61 1 .07 1.53 1.05 1.53 1.05.9 1.58 2.37 1.12 2.95.86.09-.67.35-1.12.63-1.38-2.22-.26-4.55-1.13-4.55-5 0-1.1.38-2 .99-2.7-.1-.26-.43-1.3.09-2.71 0 0 .83-.27 2.73 1.02a9.3 9.3 0 0 1 4.96 0c1.9-1.29 2.73-1.02 2.73-1.02.52 1.41.19 2.45.09 2.71.61.7.99 1.6.99 2.7 0 3.88-2.34 4.74-4.57 5 .36.31.68.92.68 1.86l-.01 2.76c0 .27.18.58.69.48A10.23 10.23 0 0 0 22 12.2C22 6.58 17.52 2 12 2Z"></path>
+        </svg>
+        <span>Code (coming soon)</span>
+      </a>
+    </div>
+
+  </div>
+
+  <div class="teaser" id="abstract">
+    <div class="teaser-title">Abstract</div>
+    <p class="teaser-description">Recent video generators achieve striking photorealism, yet remain fundamentally inconsistent in 3D. We present WorldReel, a 4D video generator that is natively spatio-temporally consistent. WorldReel jointly produces RGB frames together with 4D scene representations, including pointmaps, camera trajectory, and dense flow mapping, enabling coherent geometry and appearance modeling over time. Our explicit 4D representation enforces a single underlying scene that persists across viewpoints and dynamic content, yielding videos that remain consistent even under large non-rigid motion and significant camera movement. We train WorldReel by carefully combining synthetic and real data: synthetic data providing precise 4D supervision (geometry, motion, and camera), while real videos contribute visual diversity and realism. This blend allows WorldReel to generalize to in-the-wild footage while preserving strong geometric fidelity. Extensive experiments demonstrate that WorldReel sets a new state-of-the-art for consistent video generation with dynamic scenes and moving cameras, improving metrics of geometric consistency, motion coherence, and reducing view-time artifacts over competing methods. We believe that WorldReel brings video generation closer to 4D-consistent world modeling, where agents can render, interact, and reason about scenes through a single and stable spatiotemporal representation.</p>
+  </div>
+
+  <div class="teaser" id="overview">
+    <div class="teaser-title">Overview</div>
+    <img src="figure_overview.png" alt="WorldReel method overview" class="overview-figure">
+    <p class="overview-caption">Overview of WorldReel. We augment a video diffusion transformer with a geo-motion latent (from RGB and 2.5D cues such as depth/optical flow) to inject a 4D inductive bias for spatio-temporal consistency. A temporal DPT decoder is trained with direct supervision and regularization to predict unified 4D outputs (depth/point cloud, calibrated camera, 3D scene flow, and masks).</p>
+  </div>
+
+  <div class="section-nav">
+    <a class="section-button" href="#unified">Unified 4D Videos</a>
+    <a class="section-button" href="#scene-rendering">4D Scene Rendering</a>
+    <a class="section-button" href="#comparison">In-the-wild Video Comparison</a>
+    <a class="section-button" href="#generated">Generated In-the-wild Video</a>
+    <a class="section-button" href="#ablation">Ablation</a>
+  </div>
+
+  <div class="teaser" id="unified">
+    <div class="teaser-title">Unified 4D Videos</div>
+    <p class="teaser-description">4D outputs jointly generated by WorldReel.</p>
+    
+    <div class="ablation-sample sync-row">
+      <div class="ablation-input-row">
+        <div class="ablation-item">
+          <p class="ablation-label">Input Image</p>
+          <img src="unified_4d_outputs/condition_4.png" alt="Input Image 4" class="ablation-media">
+        </div>
+      </div>
+      <div class="ablation-row">
+        <div class="ablation-item">
+          <p class="ablation-label">Generated Video</p>
+          <video src="unified_4d_outputs/video_4.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">Generated Depth</p>
+          <video src="unified_4d_outputs/depth_4.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">Generated Optical Flow</p>
+          <video src="unified_4d_outputs/optical_flow_4.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">Generated Scene Flow</p>
+          <video src="unified_4d_outputs/pred_flow_rgb_4.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">Generated Mask</p>
+          <video src="unified_4d_outputs/pred_masks_4.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+      </div>
+    </div>
+
+    <div class="ablation-sample sync-row">
+      <div class="ablation-input-row">
+        <div class="ablation-item">
+          <p class="ablation-label">Input Image</p>
+          <img src="unified_4d_outputs/condition_5.png" alt="Input Image 5" class="ablation-media">
+        </div>
+      </div>
+      <div class="ablation-row">
+        <div class="ablation-item">
+          <p class="ablation-label">Generated Video</p>
+          <video src="unified_4d_outputs/video_5.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">Generated Depth</p>
+          <video src="unified_4d_outputs/depth_5.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">Generated Optical Flow</p>
+          <video src="unified_4d_outputs/optical_flow_5.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">Generated Scene Flow</p>
+          <video src="unified_4d_outputs/pred_flow_rgb_5.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">Generated Mask</p>
+          <video src="unified_4d_outputs/pred_masks_5.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+      </div>
+    </div>
+
+    <div class="ablation-sample sync-row">
+      <div class="ablation-input-row">
+        <div class="ablation-item">
+          <p class="ablation-label">Input Image</p>
+          <img src="unified_4d_outputs/condition_2.png" alt="Input Image 2" class="ablation-media">
+        </div>
+      </div>
+      <div class="ablation-row">
+        <div class="ablation-item">
+          <p class="ablation-label">Generated Video</p>
+          <video src="unified_4d_outputs/video_2.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">Generated Depth</p>
+          <video src="unified_4d_outputs/depth_2.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">Generated Optical Flow</p>
+          <video src="unified_4d_outputs/optical_flow_2.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">Generated Scene Flow</p>
+          <video src="unified_4d_outputs/pred_flow_rgb_2.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">Generated Mask</p>
+          <video src="unified_4d_outputs/pred_masks_2.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+      </div>
+    </div>
+
+    <div class="ablation-sample sync-row">
+      <div class="ablation-input-row">
+        <div class="ablation-item">
+          <p class="ablation-label">Input Image</p>
+          <img src="unified_4d_outputs/condition_3.png" alt="Input Image 3" class="ablation-media">
+        </div>
+      </div>
+      <div class="ablation-row">
+        <div class="ablation-item">
+          <p class="ablation-label">Generated Video</p>
+          <video src="unified_4d_outputs/video_3.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">Generated Depth</p>
+          <video src="unified_4d_outputs/depth_3.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">Generated Optical Flow</p>
+          <video src="unified_4d_outputs/optical_flow_3.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">Generated Scene Flow</p>
+          <video src="unified_4d_outputs/pred_flow_rgb_3.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">Generated Mask</p>
+          <video src="unified_4d_outputs/pred_masks_3.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+      </div>
+    </div>
+
+    <div class="ablation-sample sync-row">
+      <div class="ablation-input-row">
+        <div class="ablation-item">
+          <p class="ablation-label">Input Image</p>
+          <img src="unified_4d_outputs/condition_6.png" alt="Input Image 6" class="ablation-media">
+        </div>
+      </div>
+      <div class="ablation-row">
+        <div class="ablation-item">
+          <p class="ablation-label">Generated Video</p>
+          <video src="unified_4d_outputs/video_6.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">Generated Depth</p>
+          <video src="unified_4d_outputs/depth_6.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">Generated Optical Flow</p>
+          <video src="unified_4d_outputs/optical_flow_6.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">Generated Scene Flow</p>
+          <video src="unified_4d_outputs/pred_flow_rgb_6.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">Generated Mask</p>
+          <video src="unified_4d_outputs/pred_masks_6.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="teaser" id="scene-rendering">
+    <div class="teaser-title">4D Scene Rendering</div>
+    <p class="teaser-description">Rendering results of the generated 4D scene.</p>
+    
+    <div class="ablation-sample sync-row">
+      <div class="ablation-row">
+        <div class="ablation-item">
+          <p class="ablation-label">Input Image</p>
+          <img src="4d_scene_output/condition_1.png" alt="Input Image 1" class="ablation-media">
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">Generated Video</p>
+          <video src="4d_scene_output/video_1.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">Rendered Scene</p>
+          <video src="4d_scene_output/scene_1.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+      </div>
+    </div>
+
+    <div class="ablation-sample sync-row">
+      <div class="ablation-row">
+        <div class="ablation-item">
+          <p class="ablation-label">Input Image</p>
+          <img src="4d_scene_output/condition_2.png" alt="Input Image 2" class="ablation-media">
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">Generated Video</p>
+          <video src="4d_scene_output/video_2.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">Rendered Scene</p>
+          <video src="4d_scene_output/scene_2.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+      </div>
+    </div>
+
+    <div class="ablation-sample sync-row">
+      <div class="ablation-row">
+        <div class="ablation-item">
+          <p class="ablation-label">Input Image</p>
+          <img src="4d_scene_output/condition_3.png" alt="Input Image 3" class="ablation-media">
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">Generated Video</p>
+          <video src="4d_scene_output/video_3.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">Rendered Scene</p>
+          <video src="4d_scene_output/scene_3.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+      </div>
+    </div>
+
+    <div class="ablation-sample sync-row">
+      <div class="ablation-row">
+        <div class="ablation-item">
+          <p class="ablation-label">Input Image</p>
+          <img src="4d_scene_output/condition_4.png" alt="Input Image 4" class="ablation-media">
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">Generated Video</p>
+          <video src="4d_scene_output/video_4.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">Rendered Scene</p>
+          <video src="4d_scene_output/scene_4.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="teaser" id="comparison">
+    <div class="teaser-title">In-the-wild Video Comparison</div>
+    <p class="teaser-description">Comparison with other video generation methods.</p>
+    
+    <div class="ablation-sample sync-row">
+      <div class="ablation-input-row">
+        <div class="ablation-item">
+          <p class="ablation-label">Input Image</p>
+          <img src="comparison/condition_1.png" alt="Input Image 1" class="ablation-media">
+        </div>
+      </div>
+      <div class="ablation-row">
+        <div class="ablation-item">
+          <p class="ablation-label">CogVideoX</p>
+          <video src="comparison/cogvideox_1.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">4DNeX</p>
+          <video src="comparison/4dnex_1.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">DimensionX</p>
+          <video src="comparison/dimensionx_1.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">GeoVideo</p>
+          <video src="comparison/geovideo_1.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">WorldReel (ours)</p>
+          <video src="comparison/ours_1.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+      </div>
+    </div>
+
+    <div class="ablation-sample sync-row">
+      <div class="ablation-input-row">
+        <div class="ablation-item">
+          <p class="ablation-label">Input Image</p>
+          <img src="comparison/condition_2.png" alt="Input Image 2" class="ablation-media">
+        </div>
+      </div>
+      <div class="ablation-row">
+        <div class="ablation-item">
+          <p class="ablation-label">CogVideoX</p>
+          <video src="comparison/cogvideox_2.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">4DNeX</p>
+          <video src="comparison/4dnex_2.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">DimensionX</p>
+          <video src="comparison/dimensionx_2.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">GeoVideo</p>
+          <video src="comparison/geovideo_2.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">WorldReel (ours)</p>
+          <video src="comparison/ours_2.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+      </div>
+    </div>
+
+    <div class="ablation-sample sync-row">
+      <div class="ablation-input-row">
+        <div class="ablation-item">
+          <p class="ablation-label">Input Image</p>
+          <img src="comparison/condition_3.png" alt="Input Image 3" class="ablation-media">
+        </div>
+      </div>
+      <div class="ablation-row">
+        <div class="ablation-item">
+          <p class="ablation-label">CogVideoX</p>
+          <video src="comparison/cogvideox_3.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">4DNeX</p>
+          <video src="comparison/4dnex_3.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">DimensionX</p>
+          <video src="comparison/dimensionx_3.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">GeoVideo</p>
+          <video src="comparison/geovideo_3.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">WorldReel (ours)</p>
+          <video src="comparison/ours_3.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+      </div>
+    </div>
+
+    <div class="ablation-sample sync-row">
+      <div class="ablation-input-row">
+        <div class="ablation-item">
+          <p class="ablation-label">Input Image</p>
+          <img src="comparison/condition_4.png" alt="Input Image 4" class="ablation-media">
+        </div>
+      </div>
+      <div class="ablation-row">
+        <div class="ablation-item">
+          <p class="ablation-label">CogVideoX</p>
+          <video src="comparison/cogvideox_4.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">4DNeX</p>
+          <video src="comparison/4dnex_4.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">DimensionX</p>
+          <video src="comparison/dimensionx_4.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">GeoVideo</p>
+          <video src="comparison/geovideo_4.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">WorldReel (ours)</p>
+          <video src="comparison/ours_4.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+      </div>
+    </div>
+
+    <div class="ablation-sample sync-row">
+      <div class="ablation-input-row">
+        <div class="ablation-item">
+          <p class="ablation-label">Input Image</p>
+          <img src="comparison/condition_5.png" alt="Input Image 5" class="ablation-media">
+        </div>
+      </div>
+      <div class="ablation-row">
+        <div class="ablation-item">
+          <p class="ablation-label">CogVideoX</p>
+          <video src="comparison/cogvideox_5.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">4DNeX</p>
+          <video src="comparison/4dnex_5.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">DimensionX</p>
+          <video src="comparison/dimensionx_5.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">GeoVideo</p>
+          <video src="comparison/geovideo_5.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">WorldReel (ours)</p>
+          <video src="comparison/ours_5.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+      </div>
+    </div>
+
+    <div class="ablation-sample sync-row">
+      <div class="ablation-input-row">
+        <div class="ablation-item">
+          <p class="ablation-label">Input Image</p>
+          <img src="comparison/condition_6.png" alt="Input Image 6" class="ablation-media">
+        </div>
+      </div>
+      <div class="ablation-row">
+        <div class="ablation-item">
+          <p class="ablation-label">CogVideoX</p>
+          <video src="comparison/cogvideox_6.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">4DNeX</p>
+          <video src="comparison/4dnex_6.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">DimensionX</p>
+          <video src="comparison/dimensionx_6.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">GeoVideo</p>
+          <video src="comparison/geovideo_6.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">WorldReel (ours)</p>
+          <video src="comparison/ours_6.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+      </div>
+    </div>
+
+    <div class="ablation-sample sync-row">
+      <div class="ablation-input-row">
+        <div class="ablation-item">
+          <p class="ablation-label">Input Image</p>
+          <img src="comparison/condition_7.png" alt="Input Image 7" class="ablation-media">
+        </div>
+      </div>
+      <div class="ablation-row">
+        <div class="ablation-item">
+          <p class="ablation-label">CogVideoX</p>
+          <video src="comparison/cogvideox_7.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">4DNeX</p>
+          <video src="comparison/4dnex_7.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">DimensionX</p>
+          <video src="comparison/dimensionx_7.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">GeoVideo</p>
+          <video src="comparison/geovideo_7.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">WorldReel (ours)</p>
+          <video src="comparison/ours_7.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="teaser" id="generated">
+    <div class="teaser-title">Generated In-the-wild Video</div>
+    <p class="teaser-description">Qualitative samples generated by WorldReel on in-the-wild images.</p>
+    
+    <div class="generated-group sync-row">
+      <div class="generated-row">
+        <div class="generated-item">
+          <p class="generated-label">&nbsp;</p>
+          <img src="generated_videos/1.png" alt="Input 1" class="generated-media">
+        </div>
+        <div class="generated-item">
+          <p class="generated-label">&nbsp;</p>
+          <img src="generated_videos/2.png" alt="Input 2" class="generated-media">
+        </div>
+        <div class="generated-item">
+          <p class="generated-label">Input Image (static scenes)</p>
+          <img src="generated_videos/3.png" alt="Input 3" class="generated-media">
+        </div>
+        <div class="generated-item">
+          <p class="generated-label">&nbsp;</p>
+          <img src="generated_videos/4.png" alt="Input 4" class="generated-media">
+        </div>
+        <div class="generated-item">
+          <p class="generated-label">&nbsp;</p>
+          <img src="generated_videos/5.png" alt="Input 5" class="generated-media">
+        </div>
+      </div>
+      <div class="generated-row">
+        <div class="generated-item">
+          <p class="generated-label">&nbsp;</p>
+          <video src="generated_videos/1.mp4" loop muted playsinline class="generated-media"></video>
+        </div>
+        <div class="generated-item">
+          <p class="generated-label">&nbsp;</p>
+          <video src="generated_videos/2.mp4" loop muted playsinline class="generated-media"></video>
+        </div>
+        <div class="generated-item">
+          <p class="generated-label">Generated Videos</p>
+          <video src="generated_videos/3.mp4" loop muted playsinline class="generated-media"></video>
+        </div>
+        <div class="generated-item">
+          <p class="generated-label">&nbsp;</p>
+          <video src="generated_videos/4.mp4" loop muted playsinline class="generated-media"></video>
+        </div>
+        <div class="generated-item">
+          <p class="generated-label">&nbsp;</p>
+          <video src="generated_videos/5.mp4" loop muted playsinline class="generated-media"></video>
+        </div>
+      </div>
+    </div>
+
+    <div class="generated-group sync-row">
+      <div class="generated-row">
+        <div class="generated-item">
+          <p class="generated-label">&nbsp;</p>
+          <img src="generated_videos/6.png" alt="Input 6" class="generated-media">
+        </div>
+        <div class="generated-item">
+          <p class="generated-label">&nbsp;</p>
+          <img src="generated_videos/7.png" alt="Input 7" class="generated-media">
+        </div>
+        <div class="generated-item">
+          <p class="generated-label">Input Image (dynamic scenes)</p>
+          <img src="generated_videos/8.png" alt="Input 8" class="generated-media">
+        </div>
+        <div class="generated-item">
+          <p class="generated-label">&nbsp;</p>
+          <img src="generated_videos/9.png" alt="Input 9" class="generated-media">
+        </div>
+        <div class="generated-item">
+          <p class="generated-label">&nbsp;</p>
+          <img src="generated_videos/10.png" alt="Input 10" class="generated-media">
+        </div>
+      </div>
+      <div class="generated-row">
+        <div class="generated-item">
+          <p class="generated-label">&nbsp;</p>
+          <video src="generated_videos/6.mp4" loop muted playsinline class="generated-media"></video>
+        </div>
+        <div class="generated-item">
+          <p class="generated-label">&nbsp;</p>
+          <video src="generated_videos/7.mp4" loop muted playsinline class="generated-media"></video>
+        </div>
+        <div class="generated-item">
+          <p class="generated-label">Generated Videos</p>
+          <video src="generated_videos/8.mp4" loop muted playsinline class="generated-media"></video>
+        </div>
+        <div class="generated-item">
+          <p class="generated-label">&nbsp;</p>
+          <video src="generated_videos/9.mp4" loop muted playsinline class="generated-media"></video>
+        </div>
+        <div class="generated-item">
+          <p class="generated-label">&nbsp;</p>
+          <video src="generated_videos/10.mp4" loop muted playsinline class="generated-media"></video>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="teaser" id="ablation">
+    <div class="teaser-title">Ablation</div>
+    <p class="teaser-description">Ablation study results.</p>
+
+    <div class="ablation-text">
+      We validate the effectiveness of our core designs: the <b>geo-motion augmented latents</b> and the <b>joint optimization strategy</b>. 
+      <br><br>
+      As demonstrated in the visual comparison:
+      <ul>
+        <li>
+            <strong>Base Finetuned:</strong> a finetuned version of the CogVideoX model. Results show <strong>unnatural motion</strong> and <strong>inconsistent appearance</strong> across frames.
+          </li>
+        <li>
+          <strong>w/o Geo-Motion:</strong> relying solely on the RGB-only model (without geo-motion latents) leads to noticeable 
+          <strong>visual artifacts</strong> and <strong>ghosting</strong>, degrading scene stability.
+        </li>
+        <li>
+          <strong>w/o Joint:</strong> skipping the joint training and regularization stage results in reduced subject consistency, causing 
+          <strong>incoherent motion</strong> particularly for dynamic objects and humans.
+        </li>
+        <li>
+          <strong>WorldReel (Ours):</strong> by effectively aligning appearance and geometry, our full model produces the 
+          <strong>smoothest non-rigid motion</strong> and maintains natural, high-quality complex dynamics.
+        </li>
+      </ul>
+    </div>
+
+    <div class="ablation-sample sync-row">
+      <div class="ablation-input-row">
+        <div class="ablation-item">
+          <p class="ablation-label">Input Image</p>
+          <img src="ablation/condition_1.png" alt="Input Image 1" class="ablation-media">
+        </div>
+      </div>
+      <div class="ablation-row">
+        <div class="ablation-item">
+          <p class="ablation-label">Base Finetuned</p>
+          <video src="ablation/finetuned_1.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">w/o Geo-Motion</p>
+          <video src="ablation/wo_geomotion_1.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">w/o Joint</p>
+          <video src="ablation/wo_joint_1.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">WorldReel (ours)</p>
+          <video src="ablation/ours_1.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+      </div>
+    </div>
+
+    <div class="ablation-sample sync-row">
+      <div class="ablation-input-row">
+        <div class="ablation-item">
+          <p class="ablation-label">Input Image</p>
+          <img src="ablation/condition_2.png" alt="Input Image 2" class="ablation-media">
+        </div>
+      </div>
+      <div class="ablation-row">
+        <div class="ablation-item">
+          <p class="ablation-label">Base Finetuned</p>
+          <video src="ablation/finetuned_2.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">w/o Geo-Motion</p>
+          <video src="ablation/wo_geomotion_2.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">w/o Joint</p>
+          <video src="ablation/wo_joint_2.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">WorldReel (ours)</p>
+          <video src="ablation/ours_2.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+      </div>
+    </div>
+
+    <div class="ablation-sample sync-row">
+      <div class="ablation-input-row">
+        <div class="ablation-item">
+          <p class="ablation-label">Input Image</p>
+          <img src="ablation/condition_3.png" alt="Input Image 3" class="ablation-media">
+        </div>
+      </div>
+      <div class="ablation-row">
+        <div class="ablation-item">
+          <p class="ablation-label">Base Finetuned</p>
+          <video src="ablation/finetuned_3.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">w/o Geo-Motion</p>
+          <video src="ablation/wo_geomotion_3.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">w/o Joint</p>
+          <video src="ablation/wo_joint_3.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+        <div class="ablation-item">
+          <p class="ablation-label">WorldReel (ours)</p>
+          <video src="ablation/ours_3.mp4" loop muted playsinline class="ablation-media"></video>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bibtex-block" id="bibtex">
+    <div class="teaser-title" style="margin: 0 0 0.75em 0;">BibTeX</div>
+    <pre class="bibtex-code" id="bibtex-text">@article{todo,
+  title={WorldReel: 4D Video Generation with Consistent Geometry and Motion Modeling},
+  author={},
+  journal={arXiv preprint arXiv:XXXX.XXXXX},
+  year={2025}
+}</pre>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Select all rows that require sync playback
+      // We added the class 'sync-row' to ablation-sample and generated-group in the HTML above
+      const syncRows = document.querySelectorAll('.sync-row');
+
+      syncRows.forEach(row => {
+        const videos = row.querySelectorAll('video');
+
+        // Function to handle playing
+        const playAll = () => {
+          videos.forEach(v => {
+            // Reset to start to ensure synchronization
+            v.currentTime = 0;
+            // Play the video
+            const playPromise = v.play();
+            if (playPromise !== undefined) {
+              playPromise.catch(error => {
+                // Auto-play was prevented
+                console.log('Autoplay prevented:', error);
+              });
+            }
+          });
+        };
+
+        // Function to handle pausing
+        const pauseAll = () => {
+          videos.forEach(v => {
+            v.pause();
+          });
+        };
+
+        // Event Listeners for Mouse Enter/Leave
+        row.addEventListener('mouseenter', playAll);
+        row.addEventListener('mouseleave', pauseAll);
+      });
+
+    });
+  </script>
+
+</body>
+
+</html>
