@@ -1,0 +1,13 @@
+---
+layout: post
+title:  "GeoVideo: Introducing Geometric Regularization into Video Generation Model"
+date:   2025-12-06 21:21:53 +00:00
+image: /images/geovideo.png
+categories: research
+authors: "Yunpeng Bai, <strong>Shaoheng Fang</strong>, Chaohui Yu, Fan Wang, Qixing Huang"
+subtitle: "NIPS 2025"
+venue: "Advances in neural information processing systems"
+paper: https://arxiv.org/abs/2512.03453
+website: https://geovideo.github.io/GeoVideo/
+---
+

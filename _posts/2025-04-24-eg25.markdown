@@ -6,7 +6,7 @@ image: /images/scene_synthesis.jpg
 categories: research
 authors: "<strong>Shaoheng Fang</strong>, Haitao Yang, Raymond Mooney, Qixing Huang"
 subtitle: "EG 2025"
-venue: "EuroGraphics"
+venue: "Computer Graphics Forum 44(2) (Special Issue of Eurographics)"
 paper: https://onlinelibrary.wiley.com/doi/10.1111/cgf.70039?af=R
 code: https://github.com/bshfang/SceneMod
 ---

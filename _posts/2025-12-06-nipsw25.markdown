@@ -1,0 +1,14 @@
+---
+layout: post
+title: "Constant-Potential Machine Learning Force Field for Electrochemical Interface"
+date:   2025-06-13 21:21:53 +00:00
+image: /images/cp-mace.jpg
+categories: research
+authors: "Ruoyu Wang, <strong>Shaoheng Fang</strong>, Qixing Huang, Yuanyue Liu"
+subtitle: "NIPSW 2025"
+venue: "Journal of Chemical Theory and Computation & NIPS AI4Science Workshop"
+paper: https://pubs.acs.org/doi/10.1021/acs.jctc.5c00784
+code: https://github.com/yuanyue-liu-group/CP-MACE
+---
+
+

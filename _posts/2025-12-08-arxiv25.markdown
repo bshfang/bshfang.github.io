@@ -1,0 +1,14 @@
+---
+layout: post
+title:  "WorldReel: 4D Video Generation with Consistent Geometry and Motion Modeling"
+date:   2025-12-07 1:21:53 +00:00
+image: /images/worldreel.png
+categories: research
+authors: "<strong>Shaoheng Fang</strong>, Hanwen Jiang, Yunpeng Bai, Niloy J. Mitra, Qixing Huang"
+subtitle: "ArXiv 2025"
+venue: "Arxiv"
+paper: https://bshfang.github.io/worldreel/
+website: https://bshfang.github.io/worldreel/
+---
+
+
