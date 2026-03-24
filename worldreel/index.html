@@ -32,6 +32,15 @@
       margin-bottom: 0.5em; /* 稍微增加标题和作者之间的间距 */
     }
 
+    .publication-venue {
+      display: block;
+      margin: 0 0 0.9em;
+      color: #d65252;
+      font-size: 1.65em;
+      font-weight: 700;
+      line-height: 1.05;
+    }
+
     .hero p {
       font-size: 1.15em;
       margin: 0.75em 0 0;
@@ -100,6 +109,25 @@
     .hero-button svg {
       width: 18px;
       height: 18px;
+    }
+
+    .hero-tldr {
+      display: block;
+      width: fit-content;
+      max-width: 100%;
+      margin: 1.1em auto 0;
+      padding: 0 0.4em;
+      font-size: 1.02em;
+      line-height: 1.55;
+      color: #4a5560;
+      text-align: center;
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
+
+    .hero-tldr strong {
+      color: #1f252d;
+      font-weight: 700;
     }
 
     .overview-figure {
@@ -372,6 +400,7 @@
 <body>
   <div class="hero">
     <h1>WorldReel: 4D Video Generation with Consistent Geometry and Motion Modeling</h1>
+    <div class="publication-venue">CVPR 2026</div>
     
     <div class="publication-authors">
       <span class="author-block">
@@ -416,9 +445,10 @@
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.48 2 2 6.58 2 12.2c0 4.5 2.87 8.31 6.84 9.66.5.1.68-.22.68-.48l-.01-1.7c-2.78.62-3.37-1.34-3.37-1.34-.45-1.17-1.1-1.48-1.1-1.48-.9-.62.07-.61.07-.61 1 .07 1.53 1.05 1.53 1.05.9 1.58 2.37 1.12 2.95.86.09-.67.35-1.12.63-1.38-2.22-.26-4.55-1.13-4.55-5 0-1.1.38-2 .99-2.7-.1-.26-.43-1.3.09-2.71 0 0 .83-.27 2.73 1.02a9.3 9.3 0 0 1 4.96 0c1.9-1.29 2.73-1.02 2.73-1.02.52 1.41.19 2.45.09 2.71.61.7.99 1.6.99 2.7 0 3.88-2.34 4.74-4.57 5 .36.31.68.92.68 1.86l-.01 2.76c0 .27.18.58.69.48A10.23 10.23 0 0 0 22 12.2C22 6.58 17.52 2 12 2Z"></path>
         </svg>
-        <span>Code (coming soon)</span>
+        <span>Code</span>
       </a>
     </div>
+    <p class="hero-tldr"><strong>TLDR:</strong> WorldReel jointly generates RGB videos and 4D scene representations, keeping geometry and motion consistent across time, viewpoints, and dynamic scenes.</p>
 
   </div>
 
