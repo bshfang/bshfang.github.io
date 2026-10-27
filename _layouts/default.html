@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -8,153 +8,123 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-E00L9PT3V9');
   </script>
-  <title>{{ site.name }}</title>
-  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
-
-  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-
-  <meta name="author" content="{{ site.name }}" />
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
-  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-
+  <title>{{ site.name }}</title>
+  <meta name="author" content="{{ site.name }}">
+  <meta name="description" content="Shaoheng Fang, Ph.D. student at UT Austin working on world models, video generation and agent systems for visual generation.">
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <link rel="canonical" href="{{ site.url }}/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,500;0,8..60,600;1,8..60,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ site.baseurl }}/style.css">
 </head>
 
 <body>
-  <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-    <tr style="padding:0px">
-      <td style="padding:0px">
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-          <tr style="padding:0px">
-            <td style="padding:2.5%;width:60%;vertical-align:middle">
-              <h1>
-                (Bryant) Shaoheng Fang
-              </h1>
-              <p>
-                I am a Ph.D. student at the 
-                <a href="https://www.cs.utexas.edu/">Department of Computer Science</a> at 
-                <a href="https://www.utexas.edu/">UT Austin</a>, advised by 
-                <a href="https://www.cs.utexas.edu/~huangqx/">Qixing Huang</a> and with the support of
-                <a href="https://www.nsfgrfp.org/">NSF Graduate Research Fellowship</a> and UT College of Natural Science Dean’s Prestigious Fellowship. 
-                I am broadly interested in 3D computer vision, with a recent focus on 3D/4D content generation.
-              </p>
-              
-              <p>
-                Previously, I was a master's student in the Department of Computer Science at 
-                <a href="https://www.utexas.edu/">UT Austin</a>, advised by 
-                <a href="https://www.cs.utexas.edu/~huangqx/">Qixing Huang</a> and 
-                <a href="https://www.cs.utexas.edu/~mooney/">Raymond Mooney</a>. 
-                I received my Bachelor's degree in Computer Science from 
-                <a href="https://en.sjtu.edu.cn/">Shanghai Jiao Tong University</a>, where I worked with 
-                <a href="https://siheng-chen.github.io/">Siheng Chen</a>. 
-                I am fortunate to have worked with 
-                <a href="https://richardych.github.io/">Chaohui Yu</a> and Fan Wang at DAMO Academy. 
-                I visited 
-                <a href="https://geometry.cs.ucl.ac.uk/group_website/">SGP Group</a> at UCL this summer, advised by 
-                <a href="http://www0.cs.ucl.ac.uk/staff/n.mitra/index.html">Niloy Mitra</a>.
-              </p>
-              
-              <p>
-                Email: bshang [at] gmail [dot] com
-              </p>
-              <p style="text-align:center">
-                <a href="mailto:bshfang@gmail.com"> Email</a> &nbsp;/&nbsp;
-                <!-- <a href="https://github.com/bshfang">GitHub</a> &nbsp;/&nbsp; -->
-                <a href="https://scholar.google.com/citations?hl=en&user=e276KFYAAAAJ">Google Scholar</a> &nbsp;/&nbsp;
-                <a href="https://www.linkedin.com/in/shaoheng-fang-458884236/"> LinkedIn </a>
-              </p>
-            </td>
-            <td style="padding:2.5%;width:40%;max-width:40%">
-              <img style="width:70%;max-width:70%; border-radius: 15px;" alt="profile photo" src="images/selfie_3.jpg">
-            </td>
-          </tr>
-        </table>
+  <nav class="topnav">
+    <a class="brand" href="#top">Bryant Fang</a>
+    <div class="topnav-links">
+      <a href="#news">News</a>
+      <a href="#publications">Publications</a>
+      <a href="cv.pdf">CV</a>
+    </div>
+  </nav>
 
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-          <tr>
-            <td style="padding:2.5%;width:100%;vertical-align:middle">
-              <h2>News</h2>
-              <ul>
-                <li><strong>[25/06]</strong> Honored to receive the <a href="https://www.nsfgrfp.org/">NSF Graduate Research Fellowship</a>!</li>
-              </ul>
-            </td>
-          </tr>
-        </table>
+  <main id="top">
 
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-          <tr>
-            <td style="padding:2.5%;width:100%;vertical-align:middle">
-              <h2>Research</h2>
-            </td>
-          </tr>
-        </table>
+    <header class="hero">
+      <div class="hero-text">
+        <h1>Bryant Shaoheng Fang</h1>
+        <p>
+          I am a Ph.D. student in the
+          <a href="https://www.cs.utexas.edu/">Department of Computer Science</a> at
+          <a href="https://www.utexas.edu/">UT Austin</a>, advised by
+          <a href="https://www.cs.utexas.edu/~huangqx/">Qixing Huang</a> and supported by the
+          <a href="https://www.nsfgrfp.org/">NSF Graduate Research Fellowship</a> and the UT College of Natural Sciences Dean's Prestigious Fellowship.
+          I also work closely with
+          <a href="https://geopavlakos.github.io/">Georgios Pavlakos</a>.
+          My research interests include world models, video generation, and agent systems for visual generation.
+        </p>
+        <p>
+          I am currently a research intern at Roblox.
+          Previously, I interned at Adobe Research and DAMO Academy, Alibaba, and was a visiting researcher at UCL.
+          Before that, I was a master's student in the Department of Computer Science at
+          <a href="https://www.utexas.edu/">UT Austin</a>, advised by
+          <a href="https://www.cs.utexas.edu/~huangqx/">Qixing Huang</a> and
+          <a href="https://www.cs.utexas.edu/~mooney/">Raymond Mooney</a>.
+          I received my Bachelor's degree in Computer Science from
+          <a href="https://en.sjtu.edu.cn/">Shanghai Jiao Tong University</a>, where I worked with
+          <a href="https://siheng-chen.github.io/">Siheng Chen</a>.
+        </p>
+        <ul class="topics" aria-label="Research topics">
+          <li>World Models</li>
+          <li>Video Generation</li>
+          <li>Agent Systems</li>
+        </ul>
+        <ul class="contact">
+          <li><a href="mailto:bshfang@gmail.com">bshfang [at] gmail [dot] com</a></li>
+          <li><a href="cv.pdf">CV</a></li>
+          <li><a href="https://scholar.google.com/citations?hl=en&user=e276KFYAAAAJ">Google Scholar</a></li>
+          <li><a href="https://www.linkedin.com/in/shaoheng-fang-458884236/">LinkedIn</a></li>
+          <!-- <li><a href="https://github.com/bshfang">GitHub</a></li> -->
+        </ul>
+      </div>
+      <img class="portrait" src="images/selfie_3.jpg" alt="Photo of Shaoheng Fang">
+    </header>
 
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+    <section id="news">
+      <h2>Recent News</h2>
+      <ul class="news">
+        <li><time>Oct 2026</time><span>Started a research internship at Roblox.</span></li>
+        <li><time>May 2026</time><span>Started a research internship at Adobe Research.</span></li>
+        <li><time>Feb 2026</time><span><a href="https://bshfang.github.io/worldreel/">WorldReel</a> is accepted to CVPR 2026!</span></li>
+        <li><time>Sep 2025</time><span><a href="https://geovideo.github.io/GeoVideo/">GeoVideo</a> is accepted to NeurIPS 2025!</span></li>
+        <li><time>Jun 2025</time><span>Honored to receive the <a href="https://www.nsfgrfp.org/">NSF Graduate Research Fellowship</a>!</span></li>
+      </ul>
+    </section>
 
-          {% for post in site.posts %}
-          {% for cat in post.categories %}
-          {% if cat == 'research' %}
-          <tr>
-            <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
-              <img src="/tn{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
-            </td>
-            <td style="padding:2.5%;width:75%;vertical-align:middle">
-              <h3>{{post.title}}</h3>
-              <br>
-              {{post.authors}}
-
-              <br>
-              <em>{{post.venue}}</em>, {{ post.date | date: "%Y" }}
-              <br>
-              {% if post.paper %}
-              <a href="{{post.paper}}">paper</a> /
-              {% endif %}
-              {% if post.video %}
-              <a href="{{post.video}}">video</a> /
-              {% endif %}
-              {% if post.code %}
-              <a href="{{post.code}}">code</a> /
-              {% endif %}
-              {% if post.dataset %}
-              <a href="{{post.dataset}}">dataset</a> /
-              {% endif %}
-              {% if post.slides %}
-              <a href="{{post.slides}}">slides</a> /
-              {% endif %}
-              {% if post.website %}
-              <a href="{{post.website}}">website</a> /
-              {% endif %}
-              {% if post.youtube %}
-              <a href="{{post.youtube}}">youtube</a> /
-              {% endif %}
-              <p></p>
-              {{ post.excerpt }}
-            </td>
-          </tr>
+    <section id="publications">
+      <h2>Publications</h2>
+      {% for post in site.posts %}
+      {% if post.categories contains 'research' %}
+      <article class="pub">
+        <div class="pub-media">
+          {% if post.thumb_video %}
+          <video src="/tn{{ post.thumb_video }}" autoplay muted loop playsinline preload="metadata" aria-label="teaser for {{ post.title }}"></video>
+          {% else %}
+          <img src="/tn{{ post.image }}" alt="" loading="lazy">
           {% endif %}
-          {% endfor %}
-          {% endfor %}
-        </table>
+        </div>
+        <div class="pub-body">
+          <h3>{% if post.website %}<a href="{{ post.website }}">{{ post.title }}</a>{% elsif post.paper %}<a href="{{ post.paper }}">{{ post.title }}</a>{% else %}{{ post.title }}{% endif %}</h3>
+          <p class="authors">{{ post.authors }}</p>
+          <p class="venue">
+            <span class="badge{% if post.subtitle == 'In submission' or post.subtitle contains 'arXiv' %} badge-muted{% endif %}">{{ post.subtitle }}</span>
+            {% if post.note %}<span class="badge badge-accent">{{ post.note }}</span>{% endif %}
+          </p>
+          <p class="links">
+            {% if post.paper %}<a href="{{ post.paper }}">paper</a>{% endif %}
+            {% if post.website %}<a href="{{ post.website }}">website</a>{% endif %}
+            {% if post.code %}<a href="{{ post.code }}">code</a>{% endif %}
+            {% if post.dataset %}<a href="{{ post.dataset }}">dataset</a>{% endif %}
+            {% if post.video %}<a href="{{ post.video }}">video</a>{% endif %}
+            {% if post.slides %}<a href="{{ post.slides }}">slides</a>{% endif %}
+            {% if post.youtube %}<a href="{{ post.youtube }}">youtube</a>{% endif %}
+          </p>
+        </div>
+      </article>
+      {% endif %}
+      {% endfor %}
+    </section>
 
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-          <tr>
-            <td style="padding:0px">
-              <br>
-              <p style="text-align:center;font-size:small;">
-                Website template from <a style="font-size:small;" href="https://jonbarron.info">here</a> and <a style="font-size:small;" href="https://leonidk.com/">here</a>
-              </p>
-            </td>
-          </tr>
-        </table>
-      </td>
-    </tr>
-  </table>
+    <footer>
+      <p>&copy; {{ "now" | date: "%Y" }} Bryant Shaoheng Fang</p>
+    </footer>
+
+  </main>
 </body>
 
 </html>
-

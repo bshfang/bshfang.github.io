@@ -1,0 +1,10 @@
+---
+layout: post
+title:  "AgiWorld: An Agentic Video World Model for Building Persistent Worlds"
+date:   2026-10-26 21:21:53 +00:00
+image: /images/agiworld.png
+categories: research
+authors: "<strong>Shaoheng Fang</strong>, Yiqun Mei, Hanwen Jiang, Xin Sun, Haitian Zheng, Hao Tan, Kalyan Sunkavalli, Georgios Pavlakos, Qixing Huang, Yiwei Hu"
+subtitle: "In submission"
+venue: "In submission"
+---
