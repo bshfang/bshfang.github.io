@@ -102,7 +102,7 @@
           <h3>{% if post.website %}<a href="{{ post.website }}">{{ post.title }}</a>{% elsif post.paper %}<a href="{{ post.paper }}">{{ post.title }}</a>{% else %}{{ post.title }}{% endif %}</h3>
           <p class="authors">{{ post.authors }}</p>
           <p class="venue">
-            <span class="badge{% if post.subtitle == 'In submission' or post.subtitle contains 'arXiv' %} badge-muted{% endif %}">{{ post.subtitle }}</span>
+            <span class="badge">{{ post.subtitle }}</span>
             {% if post.note %}<span class="badge badge-accent">{{ post.note }}</span>{% endif %}
           </p>
           <p class="links">
