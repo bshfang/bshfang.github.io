@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AgiWorld: An Agentic Video World Model for Building Persistent Worlds</title>
+  <meta name="description" content="AgiWorld builds a persistent world from a single image and a free-form instruction. An agent plans the world and the journey, and a video world model generates it chunk by chunk, in a closed loop.">
+  <meta property="og:title" content="AgiWorld: An Agentic Video World Model for Building Persistent Worlds">
+  <meta property="og:description" content="One image and one instruction in, a minute-long persistent world out. An agent and a video world model in a closed loop.">
+  <meta property="og:image" content="https://bshfang.github.io/agiworld/static/media/worlds/temple_poster.jpg">
+  <meta property="og:url" content="https://bshfang.github.io/agiworld/">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+
+<nav class="topnav" aria-label="Sections">
+  <div class="topnav-inner">
+    <a class="brand" href="#top">AgiWorld</a>
+    <div class="topnav-links">
+      <a href="#abstract">Abstract</a>
+      <a href="#worlds">Results</a>
+      <a href="#method">Method</a>
+      <a href="#agentic">Agentic generation</a>
+      <a href="#wm">AgiWorld-WM</a>
+      <a href="#bibtex">BibTeX</a>
+    </div>
+  </div>
+</nav>
+
+<aside class="toc" aria-label="Contents">
+  <a class="toc-brand" href="#top">AgiWorld</a>
+  <ol>
+    <li><a href="#abstract">Abstract</a></li>
+    <li><a href="#worlds">AgiWorld results</a></li>
+    <li><a href="#method">Method</a></li>
+    <li><a href="#agentic">Agentic generation</a></li>
+    <li><a href="#wm">AgiWorld-WM</a></li>
+    <li><a href="#bibtex">BibTeX</a></li>
+  </ol>
+</aside>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <h1 class="title">AgiWorld</h1>
+    <p class="title-sub">An <span class="u">Ag</span>ent<span class="u">i</span>c Video <span class="u">World</span> Model for Building Persistent Worlds</p>
+
+    <p class="authors">
+      <span class="author"><a href="https://bshfang.github.io/">Shaoheng Fang</a><sup>1</sup></span>
+      <span class="author"><a href="https://yiqunmei.net/">Yiqun Mei</a><sup>2</sup></span>
+      <span class="author"><a href="https://hwjiang1510.github.io/">Hanwen Jiang</a><sup>2</sup></span>
+      <span class="author"><a href="https://www.sunxin.name/">Xin Sun</a><sup>2</sup></span>
+      <span class="author"><a href="https://research.adobe.com/person/haitian-zheng/">Haitian Zheng</a><sup>2</sup></span>
+      <span class="author"><a href="https://airsplay.github.io/">Hao Tan</a><sup>2</sup></span>
+      <span class="author"><a href="https://www.kalyans.org/">Kalyan Sunkavalli</a><sup>2</sup></span>
+      <span class="author"><a href="https://geopavlakos.github.io/">Georgios Pavlakos</a><sup>1</sup></span>
+      <span class="author"><a href="https://www.cs.utexas.edu/~huangqx/">Qixing Huang</a><sup>1</sup></span>
+      <span class="author"><a href="https://yiweihu.netlify.app/">Yiwei Hu</a><sup>2</sup></span>
+    </p>
+    <p class="affils"><span><sup>1</sup>The University of Texas at Austin</span><span><sup>2</sup>Adobe Research</span></p>
+
+    <div class="links">
+      <a class="btn" href="AgiWorld.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h9l5 5v15H6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 2v6h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Paper</a>
+      <a class="btn is-soon" aria-disabled="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 8l8 8M16 8l-8 8" stroke="currentColor" stroke-width="1.8"/></svg>arXiv<span class="soon">soon</span></a>
+      <a class="btn is-soon" aria-disabled="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Code<span class="soon">soon</span></a>
+      <a class="btn" href="#bibtex"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v16l-5-3-5 3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>BibTeX</a>
+    </div>
+  </div>
+
+</header>
+
+<main>
+
+<section class="section" id="abstract">
+  <div class="wrap narrow">
+    <h2 class="centered">Abstract</h2>
+    <div class="abstract"><p>Recent interactive video world models generate visually compelling videos from a single image, following user-provided camera motion and text prompts. However, such low-level control demands substantial user effort to realize a high-level intent, and the generated world struggles to remain persistent as the exploration proceeds. In this work, we present <b>AgiWorld</b>, an agentic video world model that explores and builds a persistent world from a single image and a free-form instruction. For high-level planning, our agent <b>AgiWorld-Agent</b> designs the world and the journey through it in a world state and directs the exploration. For low-level realization, our video world model <b>AgiWorld-WM</b> generates the video chunk by chunk and stores it with its geometry in a spatial memory, from which the agent updates its world state. This closed loop keeps the world faithful to the user's intent and keeps the agent's world state consistent with the generated content throughout the exploration. We co-design the two levels around the shared spatial memory and an interface of metric camera trajectories and structured prompts. Qualitative results and ablations show that AgiWorld builds persistent worlds from free-form instructions over minute-long journeys. Persistence thus arises not from the video model alone but from its closed loop with the agent.</p></div>
+  </div>
+</section>
+
+<section class="section" id="worlds">
+  <div class="wrap mid">
+    <div class="section-head">
+      <h2>AgiWorld results</h2>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="gallery" id="gallery">
+      <div class="gallery-stage">
+        <div class="gallery-info">
+          <div class="io-block">
+            <span class="label">Input image</span>
+            <img id="gallery-input" alt="Input image">
+          </div>
+          <div class="gallery-text">
+            <span class="label">Instruction (abbreviated)</span>
+            <p class="gallery-gist" id="gallery-gist"></p>
+          </div>
+        </div>
+        <div class="gallery-video">
+          <span class="label">Generated video</span>
+          <div class="player">
+            <video id="gallery-video" muted loop playsinline preload="metadata" data-autoplay></video>
+            <div class="vctl" data-for="gallery-video"></div>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-thumbs" id="gallery-thumbs" role="tablist" aria-label="Choose a world"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="method">
+  <div class="wrap mid">
+    <div class="section-head">
+      <h2>Method</h2>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="components">
+      <div class="component agent">
+        <h3>AgiWorld-Agent</h3>
+        <p>A world-building agent. It designs the world and the journey in a world state, directs every chunk, and updates its plan from what was generated.</p>
+      </div>
+      <div class="component wm">
+        <h3>AgiWorld-WM</h3>
+        <p>A state-of-the-art camera-conditioned autoregressive video world model. It generates the video five seconds at a time and keeps everything it generated in a point-cloud spatial memory. To handle occlusion and accumulated geometric errors over long rollouts, we propose <b>occlusion-aware history selection</b>, which retrieves past views by surface visibility, and <b>reliability-based memory maintenance</b>, which prefers reliable geometry and earlier observations.</p>
+      </div>
+    </div>
+    <figure class="figure">
+      <img src="static/img/overview.webp" alt="Overview of AgiWorld: the agent's director turns the world state into a trajectory and a prompt, the video world model generates a chunk from its spatial memory and writes it back with its depth, and the scene update reads the memory to update the world state." loading="lazy">
+    </figure>
+
+    <ol class="steps">
+      <li>
+        <span class="step-n">1</span>
+        <h3>World state</h3>
+        <p>A metric layout of <span class="tag confirmed">confirmed</span> and <span class="tag imagined">imagined</span> elements, plus the stages of the journey.</p>
+      </li>
+      <li>
+        <span class="step-n">2</span>
+        <h3>Director</h3>
+        <p>Turns the plan into a camera trajectory and a structured prompt.</p>
+      </li>
+      <li>
+        <span class="step-n">3</span>
+        <h3>AgiWorld-WM</h3>
+        <p>Generates the next 5 s from its spatial memory and writes it back with depth.</p>
+      </li>
+      <li>
+        <span class="step-n">4</span>
+        <h3>Review and state update</h3>
+        <p>Checks the chunk against the plan and updates the world state.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="section" id="agentic">
+  <div class="wrap mid">
+    <div class="section-head">
+      <h2>Agentic generation</h2>
+    </div>
+  </div>
+  <div class="wrap mid">
+    <div class="replay" id="replay">
+      <div class="replay-left">
+        <div class="replay-video">
+          <video id="replay-video" src="static/media/worlds/temple.mp4" poster="static/media/worlds/temple_poster.jpg" muted playsinline preload="metadata"></video>
+          <div class="vctl" data-for="replay-video"></div>
+        </div>
+        <div class="timeline" id="replay-timeline" aria-label="Chunks"></div>
+      </div>
+
+      <details class="journey">
+        <summary><span class="label">Journey</span><span class="journey-now" id="journey-now"></span></summary>
+        <ol class="stages" id="p-stages"></ol>
+      </details>
+
+      <div class="replay-right">
+        <div class="plan-head">
+          <h3 id="plan-title">World state</h3>
+          <div class="plan-legend">
+            <span><i class="lg confirmed"></i>confirmed</span>
+            <span><i class="lg imagined"></i>imagined</span>
+            <span><i class="lg dropped"></i>retired</span>
+            <span><i class="lg path"></i>camera path</span>
+          </div>
+        </div>
+        <div class="plan" id="plan">
+          <img id="plan-cloud" alt="Top view of the spatial memory">
+          <svg id="plan-svg" aria-label="Floor plan of the world state"></svg>
+          <div class="plan-tip" id="plan-tip" hidden></div>
+          <div class="plan-scale" id="plan-scale"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="wm">
+  <div class="wrap mid">
+    <div class="section-head">
+      <h2>AgiWorld-WM</h2>
+    </div>
+  </div>
+  <div class="wrap">
+
+    <div class="subsection first" id="i2v">
+      <h3>Camera-controlled image-to-video generation</h3>
+      <div class="i2v-grid">
+        <div class="player i2v-cell"><video src="static/media/i2v/1445227141663159.mp4" poster="static/media/i2v/1445227141663159_poster.jpg" muted loop playsinline preload="metadata" data-autoplay></video><img class="inset" src="static/media/i2v/1445227141663159_input.jpg" alt="Input image" loading="lazy"></div>
+        <div class="player i2v-cell"><video src="static/media/i2v/5ad1e824cc04de35.mp4" poster="static/media/i2v/5ad1e824cc04de35_poster.jpg" muted loop playsinline preload="metadata" data-autoplay></video><img class="inset" src="static/media/i2v/5ad1e824cc04de35_input.jpg" alt="Input image" loading="lazy"></div>
+        <div class="player i2v-cell"><video src="static/media/i2v/f47839e25e89f44f.mp4" poster="static/media/i2v/f47839e25e89f44f_poster.jpg" muted loop playsinline preload="metadata" data-autoplay></video><img class="inset" src="static/media/i2v/f47839e25e89f44f_input.jpg" alt="Input image" loading="lazy"></div>
+        <div class="player i2v-cell"><video src="static/media/i2v/9f361436f272b697.mp4" poster="static/media/i2v/9f361436f272b697_poster.jpg" muted loop playsinline preload="metadata" data-autoplay></video><img class="inset" src="static/media/i2v/9f361436f272b697_input.jpg" alt="Input image" loading="lazy"></div>
+        <div class="player i2v-cell"><video src="static/media/i2v/91b61a0a233266b6.mp4" poster="static/media/i2v/91b61a0a233266b6_poster.jpg" muted loop playsinline preload="metadata" data-autoplay></video><img class="inset" src="static/media/i2v/91b61a0a233266b6_input.jpg" alt="Input image" loading="lazy"></div>
+        <div class="player i2v-cell"><video src="static/media/i2v/4dbff8a392bbd187.mp4" poster="static/media/i2v/4dbff8a392bbd187_poster.jpg" muted loop playsinline preload="metadata" data-autoplay></video><img class="inset" src="static/media/i2v/4dbff8a392bbd187_input.jpg" alt="Input image" loading="lazy"></div>
+      </div>
+    </div>
+
+    <div class="subsection" id="cmp">
+      <h3>Comparison with SOTA models</h3>
+      <div class="cmp-frame">
+        <div class="cmp-video">
+          <video id="cmp-video" muted loop playsinline preload="metadata" data-autoplay></video>
+          <span class="q tl">GT</span><span class="q tr">Lyra 2.0</span><span class="q bl">SANA-WM</span><span class="q br ours">AgiWorld-WM (ours)</span>
+        </div>
+        <div class="vctl" data-for="cmp-video"></div>
+      </div>
+      <div class="scene-thumbs" id="cmp-scenes" role="tablist" aria-label="Choose a scene"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="bibtex">
+  <div class="wrap mid"><h2>BibTeX</h2></div>
+  <div class="wrap narrow">
+    <div class="bib">
+      <button class="copy" id="bib-copy" type="button">Copy</button>
+<pre id="bib-text">@article{fang2026agiworld,
+  title={{AgiWorld}: An Agentic Video World Model for Building Persistent Worlds},
+  author={Fang, Shaoheng and Mei, Yiqun and Jiang, Hanwen and Sun, Xin and Zheng, Haitian and Tan, Hao and Sunkavalli, Kalyan and Pavlakos, Georgios and Huang, Qixing and Hu, Yiwei},
+  journal={arXiv preprint},
+  year={2026}
+}</pre>
+    </div>
+  </div>
+</section>
+
+</main>
+
+
+<script src="static/js/main.js"></script>
+<script src="static/js/replay.js"></script>
+</body>
+</html>
