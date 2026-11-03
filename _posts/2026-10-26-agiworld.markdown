@@ -7,4 +7,6 @@ categories: research
 authors: "<strong>Shaoheng Fang</strong>, Yiqun Mei, Hanwen Jiang, Xin Sun, Haitian Zheng, Hao Tan, Kalyan Sunkavalli, Georgios Pavlakos, Qixing Huang, Yiwei Hu"
 subtitle: "In submission"
 venue: "In submission"
+paper: https://arxiv.org/abs/2611.02341
+website: https://bshfang.github.io/agiworld/
 ---
